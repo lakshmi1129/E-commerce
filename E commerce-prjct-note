@@ -1,0 +1,20 @@
+                        E-commerce website
+
+                         front end -Angular
+
+        1. create angular project - ng new project-name
+        2. Run angular project - ng serve
+        3. add bootstrap, fontawesome and google fonts in index.html
+        4. Lazy load the commonly used HTML pages inside a module
+            ng g m products --route products --module app.module
+        5. add router outlet selector inside the root component HTML page
+        6. create component shoud be lazy loaded in the products module
+            all products = ng g c products/all-products
+            cart  =ng g c products/cart
+            wishlist =ng g c products/wishlist
+            page-not-found = ng g c page-not-found (to display a bad page request from user)
+            header = ng g c header
+            footer  = ng g c header
+        7. set path for each component in products routing module (because it was lazy load)
+            -to redirect from localhost:4200 to specific route
+        8. Design component
