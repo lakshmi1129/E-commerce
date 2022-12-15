@@ -1,1 +1,65 @@
-<p>cart works!</p>
+<!-- when cart empty -->
+<div class="container mt-5 border p-5">
+    <div class="row  text-center">
+        <div class="col">
+            <img src="https://www.bidzoon.com/images/emptycart.gif" alt="no image">
+            <h3 class="mt-2">Your Cart is empty</h3>
+            <a routerLink="/" class="btn btn-primary mt-2 " >Shop Now</a>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- cart with contents -->
+<div class="container mt-5 ">
+    <div class="row">
+        <div class="col">
+            <table class="table border">
+                <thead>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th> Name</th>
+                        <th> image</th>
+                        <th> Description</th>
+                        <th>Price</th>
+                        <th> Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- change according to user -->
+                    <tr>
+                        <td>1</td>
+                        <td>Men's shirt</td>
+                        <td>
+                            <img src="" alt="no image">
+                        </td>
+                        <td>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        </td>
+                        <td>300</td>
+                        <td>
+                            <i class="fa fa-trash text-danger"></i>
+                        </td>
+                    </tr>
+                    <!-- stop changing row -->
+
+                                                
+                </tbody>
+            </table>
+            <div style="float: right;" class="mb-4">
+               
+                    <button class="btn btn-danger  ">Empty Cart</button>
+                
+                    <a routerLink="/" class="btn btn-primary ms-3">Shop More</a>
+              
+                    <button class="btn btn-success ms-3">Check Out</button>
+               
+                    <b for="" class="ms-2">Grant Total: 0</b>
+             
+            </div>
+        </div>
+    </div>
+</div>
