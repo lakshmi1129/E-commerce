@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item">
-                    <input placeholder="search products.." type="text" class="form-control">
+                    <input (keyup)="searchTerm($event)" placeholder="search products.." type="text" class="form-control">
                 </li>
                 <li class="nav-item ms-4"><a class="nav-link text-light" routerLink="products/wishlist">Wishlist</a></li>
                 

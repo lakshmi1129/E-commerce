@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProductsRoutingModule } from './products/products-routing.module';
 
 const routes: Routes = [
   // to redirect to all-products page
@@ -11,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), ProductsRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
