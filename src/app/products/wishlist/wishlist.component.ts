@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -12,7 +13,7 @@ export class WishlistComponent implements OnInit {
   wishList: any
   eMsg:string =""
 
-  constructor(private api:ApiService, private route:Router) { }
+  constructor(private api:ApiService, private route:Router, private cart:CartService) { }
 
   ngOnInit(): void {
     this.api.getWishlist()
@@ -20,6 +21,8 @@ export class WishlistComponent implements OnInit {
       // success
       (data: any) => {
         this.wishList = data.result
+        // auto refresh
+       
      
       },
       // client error
@@ -36,14 +39,23 @@ export class WishlistComponent implements OnInit {
     this.api.deleteFromWish(product.id)
     .subscribe(
       (result:any)=>{
-        alert(result.message)
-        this.route.navigateByUrl('wishlist')
+        // success case
+       this.wishList =result.wishlist
+       if(this.wishList.length==0){
+        this.eMsg='empty wishlist'
+      }
       },
       (result:any)=>{
         alert(result.error.message)
 
       }
     )
+  }
+
+  addToCart(product:any){
+    this.cart.addToCart(product)
+    this.deleteFromWish(product)
+
   }
 
 }
