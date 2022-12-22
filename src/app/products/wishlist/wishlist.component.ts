@@ -22,6 +22,9 @@ export class WishlistComponent implements OnInit {
       (data: any) => {
         this.wishList = data.result
         // auto refresh
+        if(this.wishList.length==0){
+        this.eMsg='empty wishlist'
+      }
        
      
       },
@@ -52,6 +55,7 @@ export class WishlistComponent implements OnInit {
     )
   }
 
+  // add to cart
   addToCart(product:any){
     this.cart.addToCart(product)
     this.deleteFromWish(product)

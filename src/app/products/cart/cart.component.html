@@ -4,7 +4,7 @@
         <div class="col">
             <img src="https://www.bidzoon.com/images/emptycart.gif" alt="no image">
             <h3 class="mt-2">Your Cart is empty</h3>
-            <a routerLink="/" class="btn btn-primary mt-2 " >Shop Now</a>
+            <a routerLink="/" class="btn btn-primary mt-2 ">Shop Now</a>
         </div>
 
     </div>
@@ -18,7 +18,7 @@
         <div class="col">
             <table class="table border">
                 <thead>
-                    <tr >
+                    <tr>
                         <th>Sl.No</th>
                         <th> Name</th>
                         <th> image</th>
@@ -41,24 +41,76 @@
                         </td>
                         <td>{{product.price}}</td>
                         <td>
-                            <i class="fa fa-trash text-danger"></i>
+                            <i (click)="removeItem(product)" class="fa fa-trash text-danger"></i>
+
                         </td>
                     </tr>
                     <!-- stop changing row -->
 
-                                                
+
                 </tbody>
             </table>
             <div style="float: right;" class="mb-4">
-               
-                    <button class="btn btn-danger  ">Empty Cart</button>
-                
-                    <a routerLink="/" class="btn btn-primary ms-3">Shop More</a>
-              
-                    <button class="btn btn-success ms-3">Check Out</button>
-               
-                    <b for="" class="ms-2">Grant Total: 0</b>
-             
+
+                <button (click)="removeAllItems()" class="btn btn-danger  ">Empty Cart</button>
+
+                <a routerLink="/" class="btn btn-primary ms-3">Shop More</a>
+
+                <button class="btn btn-success ms-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Check
+                    Out</button>
+
+                <b for="" class="ms-2">Grant Total: $ {{total}}</b>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- checkout Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Check out Page</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <h3>Delivery Address</h3>
+                <form class="border p-2">
+                    <input placeholder="Customer Name" type="text" class="form-control mb-2">
+                    <input placeholder=" Apartment /Flat Number/House Number" type="text" class="form-control mb-2">
+                    <input placeholder="Pincode" type="text" class="form-control mb-2">
+                    <input placeholder="State" type="text" class="form-control mb-2">
+                    <input placeholder="Country" type="text" class="form-control mb-2">
+                    <input placeholder="Contact number" type="text" class="form-control mb-2">
+                </form>
+
+                <div [ngSwitch]="total" class="mt-2 p-2">
+                    <h4>Discounts</h4>
+                   <span *ngSwitchCase="10.99"><img (click)="discount10per()"   width="150px"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcuPwn-pBHVN4NgAr3PnSr4sQgHwe3Y2DJkA&usqp=CAU"
+                        alt="no coupen"> </span> 
+                   <span *ngSwitchCase="109.95"> <img (click)="discount50per()"    width="150px" src="https://www.pngmart.com/files/7/Coupon-PNG-Transparent-HD-Photo.png"
+                        alt="no coupen"> </span>
+                   <span *ngSwitchCase="55.99"> <img (click)="discount25per()"  width="150px"
+                        src="https://e7.pngegg.com/pngimages/658/345/png-clipart-25-off-illustration-25-discount-miscellaneous-discount-signs.png"
+                        alt="no coupen"></span>
+                   <span *ngSwitchDefault > <img (click)="discount3per()" width="150px"
+                        src="https://media.istockphoto.com/id/1136155337/vector/promo-code-coupon-code-flat-vector-set-design-illustration-on-white-background.jpg?s=612x612&w=0&k=20&c=sM95EWp2rPqPfp0pGxKi4Jkjgz-0buvGtSSZkNQYIao="
+                        alt="no coupen"> </span>
+                </div>
+            </div>
+            <div *ngIf="updatedTotal">
+                <h5 class=" text-center" >New Total After Discount:  <b class=" text-danger text-center">$ {{updatedTotal}}</b></h5>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel </button>
+                <button (click)="proceed()" data-bs-dismiss="modal" type="button" class="btn btn-primary">Proceed</button>
             </div>
         </div>
     </div>
